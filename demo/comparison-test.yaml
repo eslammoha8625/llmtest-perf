@@ -1,0 +1,45 @@
+provider: openai_compatible
+
+targets:
+  baseline:
+    base_url: "http://localhost:8000/v1"
+    model: "baseline-model"
+    api_key_env: "MOCK_API_KEY"
+
+  candidate:
+    base_url: "http://localhost:8000/v1"  # Same server for demo
+    model: "candidate-model"
+    api_key_env: "MOCK_API_KEY"
+
+workload:
+  duration_seconds: 5
+  max_concurrency: 2
+  ramp_up_seconds: 1
+  stream: true
+
+  prompt_sets:
+    - name: queries
+      weight: 100
+      prompts:
+        - "Test query 1"
+        - "Test query 2"
+        - "Test query 3"
+
+request:
+  max_tokens: 50
+  temperature: 0.0
+  timeout_seconds: 10
+
+comparison:
+  fail_on_regression: true
+  max_p95_latency_regression_percent: 15
+  max_ttft_regression_percent: 15
+  max_output_tokens_per_sec_drop_percent: 15
+  max_error_rate_increase_percent: 5
+
+reporting:
+  json: "demo/comparison-results.json"
+  html: "demo/comparison-report.html"
+  console: true
+
+seed: 42

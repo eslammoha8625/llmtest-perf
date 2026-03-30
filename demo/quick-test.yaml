@@ -1,0 +1,37 @@
+provider: openai_compatible
+
+targets:
+  baseline:
+    base_url: "http://localhost:8000/v1"
+    model: "mock-model"
+    api_key_env: "MOCK_API_KEY"
+
+workload:
+  duration_seconds: 5
+  max_concurrency: 2
+  ramp_up_seconds: 1
+  stream: true
+
+  prompt_sets:
+    - name: simple_queries
+      weight: 100
+      prompts:
+        - "Hello"
+        - "Test query"
+        - "How are you?"
+
+request:
+  max_tokens: 50
+  temperature: 0.0
+  timeout_seconds: 10
+
+slos:
+  p95_latency_ms: 3000
+  error_rate_percent: 10.0
+
+reporting:
+  json: "demo/quick-results.json"
+  html: "demo/quick-report.html"
+  console: true
+
+seed: 42

@@ -1,0 +1,59 @@
+provider: openai_compatible
+
+targets:
+  baseline:
+    base_url: "http://localhost:8000/v1"
+    model: "mock-gpt-3.5"
+    api_key_env: "MOCK_API_KEY"
+
+  candidate:
+    base_url: "http://localhost:8001/v1"
+    model: "mock-gpt-4"
+    api_key_env: "MOCK_API_KEY"
+
+workload:
+  duration_seconds: 10
+  max_concurrency: 8
+  ramp_up_seconds: 2
+  stream: true
+
+  prompt_sets:
+    - name: short_queries
+      weight: 60
+      prompts:
+        - "What is machine learning?"
+        - "Explain neural networks briefly."
+        - "Define artificial intelligence."
+        - "What is deep learning?"
+
+    - name: technical_questions
+      weight: 40
+      prompts:
+        - "How does a transformer model work?"
+        - "Explain attention mechanisms in detail."
+        - "What are the differences between BERT and GPT?"
+
+request:
+  max_tokens: 100
+  temperature: 0.0
+  timeout_seconds: 30
+
+slos:
+  p95_latency_ms: 5000
+  ttft_ms: 500
+  output_tokens_per_sec: 30
+  error_rate_percent: 5.0
+
+comparison:
+  fail_on_regression: true
+  max_p95_latency_regression_percent: 20
+  max_ttft_regression_percent: 20
+  max_output_tokens_per_sec_drop_percent: 20
+  max_error_rate_increase_percent: 5
+
+reporting:
+  json: "demo/results.json"
+  html: "demo/report.html"
+  console: true
+
+seed: 42

@@ -1,0 +1,173 @@
+{
+  "verdict": {
+    "status": "PASS",
+    "summary": "No regressions detected (2 improvements)",
+    "recommendation": "SAFE TO PROMOTE",
+    "regression_count": 0,
+    "improvement_count": 2
+  },
+  "metrics_comparison": [
+    {
+      "metric_name": "P95 Latency (ms)",
+      "baseline_value": 6283.204041999999,
+      "candidate_value": 6107.654041399999,
+      "delta_percent": -2.7939567046770786,
+      "delta_absolute": -175.5500006000002,
+      "is_regression": false,
+      "is_improvement": true,
+      "message": "P95 Latency: decrease of 2.8% (improvement)"
+    },
+    {
+      "metric_name": "TTFT (ms)",
+      "baseline_value": 4818.148906200001,
+      "candidate_value": 4667.617708000001,
+      "delta_percent": -3.124253756588895,
+      "delta_absolute": -150.5311982000003,
+      "is_regression": false,
+      "is_improvement": true,
+      "message": "TTFT: decrease of 3.1% (improvement)"
+    },
+    {
+      "metric_name": "Output Tokens/Sec",
+      "baseline_value": 18.332690390604096,
+      "candidate_value": 16.148269969899356,
+      "delta_percent": -11.915438346268603,
+      "delta_absolute": -2.1844204207047397,
+      "is_regression": false,
+      "is_improvement": false,
+      "message": "Output Tokens/Sec: decrease of 11.9% (within threshold)"
+    },
+    {
+      "metric_name": "Error Rate (%)",
+      "baseline_value": 0.0,
+      "candidate_value": 0.0,
+      "delta_percent": null,
+      "delta_absolute": 0.0,
+      "is_regression": false,
+      "is_improvement": false,
+      "message": "Cannot calculate delta"
+    }
+  ],
+  "baseline": {
+    "target_name": "baseline",
+    "total_requests": 4,
+    "successful_requests": 4,
+    "failed_requests": 0,
+    "error_rate_percent": 0.0,
+    "duration_seconds": 10.909473499999999,
+    "requests_per_sec": 0.3666538078120819,
+    "total_output_tokens": 200,
+    "output_tokens_per_sec": 18.332690390604096,
+    "latency": {
+      "p50": 4900.7144375,
+      "p90": 6269.822542,
+      "p95": 6283.204041999999,
+      "p99": 6293.909242,
+      "mean": 4412.0799480000005,
+      "min": 1550.3053750000001,
+      "max": 6296.585542,
+      "count": 4
+    },
+    "ttft": {
+      "p50": 3447.6704165,
+      "p90": 4803.841562400001,
+      "p95": 4818.148906200001,
+      "p99": 4829.594781240001,
+      "mean": 2953.5879480000003,
+      "min": 86.554709,
+      "max": 4832.456250000001,
+      "count": 4
+    },
+    "error_breakdown": {},
+    "prompt_set_metrics": {
+      "queries": {
+        "total_requests": 4,
+        "successful_requests": 4,
+        "failed_requests": 0,
+        "error_rate_percent": 0.0,
+        "latency": {
+          "p50": 4900.7144375,
+          "p90": 6269.822542,
+          "p95": 6283.204041999999,
+          "p99": 6293.909242,
+          "mean": 4412.0799480000005,
+          "min": 1550.3053750000001,
+          "max": 6296.585542,
+          "count": 4
+        },
+        "ttft": {
+          "p50": 3447.6704165,
+          "p90": 4803.841562400001,
+          "p95": 4818.148906200001,
+          "p99": 4829.594781240001,
+          "mean": 2953.5879480000003,
+          "min": 86.554709,
+          "max": 4832.456250000001,
+          "count": 4
+        },
+        "output_tokens_mean": 50.0
+      }
+    }
+  },
+  "candidate": {
+    "target_name": "candidate",
+    "total_requests": 3,
+    "successful_requests": 3,
+    "failed_requests": 0,
+    "error_rate_percent": 0.0,
+    "duration_seconds": 9.288920749999999,
+    "requests_per_sec": 0.32296539939798713,
+    "total_output_tokens": 150,
+    "output_tokens_per_sec": 16.148269969899356,
+    "latency": {
+      "p50": 5186.597041999999,
+      "p90": 6005.314374799999,
+      "p95": 6107.654041399999,
+      "p99": 6189.525774679999,
+      "mean": 4822.654638666666,
+      "min": 3071.373166,
+      "max": 6209.993707999999,
+      "count": 3
+    },
+    "ttft": {
+      "p50": 3728.5948329999997,
+      "p90": 4563.281833,
+      "p95": 4667.617708000001,
+      "p99": 4751.086408,
+      "mean": 3375.0589163333334,
+      "min": 1624.6283329999999,
+      "max": 4771.953583,
+      "count": 3
+    },
+    "error_breakdown": {},
+    "prompt_set_metrics": {
+      "queries": {
+        "total_requests": 3,
+        "successful_requests": 3,
+        "failed_requests": 0,
+        "error_rate_percent": 0.0,
+        "latency": {
+          "p50": 5186.597041999999,
+          "p90": 6005.314374799999,
+          "p95": 6107.654041399999,
+          "p99": 6189.525774679999,
+          "mean": 4822.654638666666,
+          "min": 3071.373166,
+          "max": 6209.993707999999,
+          "count": 3
+        },
+        "ttft": {
+          "p50": 3728.5948329999997,
+          "p90": 4563.281833,
+          "p95": 4667.617708000001,
+          "p99": 4751.086408,
+          "mean": 3375.0589163333334,
+          "min": 1624.6283329999999,
+          "max": 4771.953583,
+          "count": 3
+        },
+        "output_tokens_mean": 50.0
+      }
+    }
+  }
+}
