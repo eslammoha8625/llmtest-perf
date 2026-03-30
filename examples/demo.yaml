@@ -1,0 +1,74 @@
+provider: openai_compatible
+
+targets:
+  baseline:
+    base_url: "http://localhost:8000/v1"
+    model: "gpt-3.5-turbo"
+    api_key_env: "OPENAI_API_KEY"
+
+  candidate:
+    base_url: "http://localhost:8001/v1"
+    model: "gpt-3.5-turbo"
+    api_key_env: "OPENAI_API_KEY"
+
+workload:
+  duration_seconds: 60
+  max_concurrency: 32
+  ramp_up_seconds: 10
+  stream: true
+
+  prompt_sets:
+    - name: short_qa
+      weight: 40
+      prompts:
+        - "What is the capital of France?"
+        - "Explain TCP vs UDP briefly."
+        - "Summarize the purpose of DNS."
+        - "What is the difference between REST and GraphQL?"
+        - "Define what a hash function is."
+
+    - name: medium_reasoning
+      weight: 30
+      prompts:
+        - "Explain how a hash table works internally with collision handling."
+        - "What are the tradeoffs between SQL and NoSQL databases?"
+        - "Describe the CAP theorem and its practical implications."
+        - "Compare microservices vs monolithic architectures."
+
+    - name: long_context
+      weight: 20
+      prompts:
+        - "Summarize the key architectural principles for building scalable distributed systems, covering topics like consistency, availability, partition tolerance, load balancing, and fault tolerance."
+        - "Explain the differences between synchronous and asynchronous programming models, when to use each, and their impact on performance and complexity."
+
+    - name: structured_output
+      weight: 10
+      prompts:
+        - "Return a JSON object with keys: summary, sentiment, topics for this text: The new product launch exceeded all expectations with strong customer response."
+        - "Extract entities from: Apple announced the new MacBook Pro with M3 chip at their October event."
+        - "Generate a JSON with: risk_level, next_action, priority for this incident: Database connection pool exhausted during peak traffic."
+
+request:
+  max_tokens: 256
+  temperature: 0.0
+  timeout_seconds: 60
+
+slos:
+  p95_latency_ms: 2500
+  ttft_ms: 1200
+  output_tokens_per_sec: 40
+  error_rate_percent: 1.0
+
+comparison:
+  fail_on_regression: true
+  max_p95_latency_regression_percent: 10
+  max_ttft_regression_percent: 10
+  max_output_tokens_per_sec_drop_percent: 10
+  max_error_rate_increase_percent: 1
+
+reporting:
+  json: "artifacts/results.json"
+  html: "artifacts/report.html"
+  console: true
+
+seed: 42

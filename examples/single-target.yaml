@@ -1,0 +1,38 @@
+provider: openai_compatible
+
+targets:
+  production:
+    base_url: "https://api.openai.com/v1"
+    model: "gpt-3.5-turbo"
+    api_key_env: "OPENAI_API_KEY"
+
+workload:
+  duration_seconds: 30
+  max_concurrency: 16
+  ramp_up_seconds: 5
+  stream: true
+
+  prompt_sets:
+    - name: user_queries
+      weight: 100
+      prompts:
+        - "What is machine learning?"
+        - "Explain neural networks."
+        - "What is deep learning?"
+        - "Define artificial intelligence."
+
+request:
+  max_tokens: 150
+  temperature: 0.0
+  timeout_seconds: 30
+
+slos:
+  p95_latency_ms: 3000
+  ttft_ms: 1500
+  output_tokens_per_sec: 30
+  error_rate_percent: 2.0
+
+reporting:
+  json: "artifacts/single-target-results.json"
+  html: "artifacts/single-target-report.html"
+  console: true
